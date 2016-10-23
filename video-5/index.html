@@ -4,18 +4,18 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>ホモ4</title>
-	<meta property="og:title" content="ホモ4">
+	<title>ホモ5</title>
+	<meta property="og:title" content="ホモ5">
 	<meta property="og:type" content="article">
-	<meta property="og:image" content="https://utzmie.github.io/gay-video-test/video-4/ogp.jpg">
-	<meta property="og:url" content="https://utzmie.github.io/gay-video-test/video-4/">
+	<meta property="og:image" content="https://utzmie.github.io/gay-video-test/video-5/ogp.jpg">
+	<meta property="og:url" content="https://utzmie.github.io/gay-video-test/video-5/">
 	<meta property="og:description" content="HTML5(canvas)でクロマキー合成テスト">
-	<meta property="og:site_name" content="ホモ4">
+	<meta property="og:site_name" content="ホモ5">
 	<meta property="og:locale" content="ja_JP">
 	<meta name="twitter:card" content="summary">
-	<meta name="twitter:title" content="ホモ4">
+	<meta name="twitter:title" content="ホモ5">
 	<meta name="twitter:description" content="HTML5(canvas)でクロマキー合成テスト">
-	<meta name="twitter:image" content="https://utzmie.github.io/gay-video-test/video-4/ogp.jpg">
+	<meta name="twitter:image" content="https://utzmie.github.io/gay-video-test/video-5/ogp.jpg">
 	<link rel="stylesheet" href="../style.css">
 </head>
 <body>
@@ -23,28 +23,49 @@
 	<div class="container">
 		<h1>HTML5(canvas)でクロマキー合成テスト</h1>
 
+		<div style="display: none;">
 		<h2>video</h2>
 		<video id="gay" muted autoplay loop controls width="480" height="270">
 			<source src="../gay.mp4">
 		</video>
+		</div>
 
 		<h2>canvas</h2>
 		<div class="canvas-container video-4">
 			<canvas id="canvas" width="480" height="270"></canvas>
-			<input type="radio" id="bg1" name="switch" checked> <label for="bg1"> 1</label>
-			<input type="radio" id="bg2" name="switch"> <label for="bg2"> 2</label>
 			<div class="canvas-bg-container">
-				<div class="canvas-bg canvas-bg1">
-					<img style="display: none;" src="./bg.jpg" alt="">
-					<img style="display: none;" src="./bg2.jpg" alt="">
+				<div class="canvas-bg canvas-bg1" id="canvas-bg">
+					<!-- <img style="display: none;" src="./bg.jpg" alt=""> -->
 				</div>
 			</div>
 		</div>
 
-		<p class="pagination">
-			<a href="../video-3/">前へ</a>
-			<a href="../video-5/">次へ</a>
+		<p class="input-container">
+			<input type="text" id="image_url" name="image_url" placeholder="差し替える背景画像のURLを入れてね">
+			<button class="button" id="image_submit">変更</button>
 		</p>
+		<style>
+			.input-container {
+				display: -webkit-flex;
+				display: -moz-flex;
+				display: -ms-flex;
+				display: flex;
+				align-items: center;
+			}
+			.input-container input[type="text"] {
+				box-sizing: border-box;
+				width: 100%;
+				height: 3em;
+				font-size: 16px;
+				padding: .5em;
+				margin-right: .5em
+			}
+			.input-container input[type="submit"] {
+				width: auto;
+			}
+		</style>
+
+		<p class="pagination"><a href="../video-4/">前へ</a></p>
 
 		<p><a href="../">HOMO</a></p>
 	</div><!-- /container -->
@@ -102,6 +123,21 @@
 				Math.pow((rgb1.b - rgb2.b), 2)
 			);
 		};
+
+
+
+		// 背景画像の変更
+		var image_url    = document.getElementById('image_url');
+		var image_submit = document.getElementById('image_submit');
+		var canvas_bg    = document.getElementById('canvas-bg');
+
+		image_submit.addEventListener('click', function() {
+			if ( image_url.value ) {
+				canvas_bg.setAttribute('style', "background-image: url(" + image_url.value +");");
+				console.log(image_url.value);
+			}
+		});
+
 
 	</script>
 </body>

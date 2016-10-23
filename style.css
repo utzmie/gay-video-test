@@ -32,6 +32,7 @@ ul {
 
 /* button */
 .button {
+	white-space: nowrap;
 	display: inline-block;
 	position: relative;
 	margin: 20px 0 26px;
@@ -45,7 +46,7 @@ ul {
 	cursor: pointer;
 	outline: 0;
 }
-.button::after {
+.button.button--arrow::after {
 	content: '';
 	display: inline-block;
 	vertical-align: middle;
@@ -150,6 +151,9 @@ ul {
 	color: #ffffff;
 }
 
+.canvas-bg {
+	background-image: url(./video-4/bg.jpg);
+}
 #bg1:checked ~ .canvas-bg-container .canvas-bg {
 	background-image: url(./video-4/bg.jpg);
 }
