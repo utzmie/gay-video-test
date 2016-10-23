@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>ホモ4</title>
+	<meta property="og:title" content="ホモ4">
+	<meta property="og:type" content="article">
+	<meta property="og:image" content="https://utzmie.github.io/gay-video-test/video-4/ogp.jpg">
+	<meta property="og:url" content="https://utzmie.github.io/gay-video-test/video-4/">
+	<meta property="og:description" content="HTML5(canvas)でクロマキー合成テスト">
+	<meta property="og:site_name" content="ホモ4">
+	<meta property="og:locale" content="ja_JP">
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="ホモ4">
+	<meta name="twitter:description" content="HTML5(canvas)でクロマキー合成テスト">
+	<meta name="twitter:image" content="https://utzmie.github.io/gay-video-test/video-4/ogp.jpg">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+	<div class="container">
+		<h1>HTML5(canvas)でクロマキー合成テスト</h1>
+
+		<h2>video</h2>
+		<video id="gay" muted autoplay loop controls width="480" height="270">
+			<source src="../gay.mp4">
+		</video>
+
+		<h2>canvas</h2>
+		<canvas id="canvas" width="480" height="270"></canvas>
+
+		<p><a href="../video-3/">前へ</a></p>
+	</div><!-- /container -->
+
+	<script>
+		var video  = document.getElementById('gay');
+		var canvas = document.getElementById('canvas');
+		var context = canvas.getContext("2d");
+
+		window.onload = function() {
+			draw();	
+		}
+
+		// 参考： http://qiita.com/keiskimu/items/a4fc9ebb338906b9813e
+		var draw = function() {
+			context.drawImage(video, 0, 0, canvas.width, canvas.height);
+			chromaKey();
+			requestAnimationFrame(draw)
+		}
+
+		// background color
+		var chromaKeyColor = {
+			r: 0,
+			g: 0,
+			b: 255
+		};
+
+        var colorDistance = 30;
+
+		var chromaKey = function () {
+			var imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+			var data = imageData.data;
+
+			for (var i = 0, l = data.length; i < l; i += 4) {
+
+				var target = {
+					r: data[i],
+					g: data[i + 1],
+					b: data[i + 2]
+				};
+
+				if (getColorDistance(chromaKeyColor, target) < colorDistance) {
+						data[i + 3] = 0;
+					}
+				}
+
+			imageData.data = data;
+			context.putImageData(imageData, 0, 0);
+		};
+
+		var getColorDistance = function (rgb1, rgb2) {
+			return Math.sqrt(
+				Math.pow((rgb1.r - rgb2.r), 2) +
+				Math.pow((rgb1.g - rgb2.g), 2) +
+				Math.pow((rgb1.b - rgb2.b), 2)
+			);
+		};
+
+	</script>
+</body>
+</html>
