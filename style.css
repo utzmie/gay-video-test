@@ -11,7 +11,12 @@ body, button {
 video,
 canvas {
 	display: block;
-	margin: 1em auto 3em;
+	margin: auto;
+}
+
+ul {
+	text-align: left;
+	margin: 2.618em 0;
 }
 
 /* container */
@@ -22,16 +27,8 @@ canvas {
 	margin-right: auto;
 }
 
-/* canvas */
-#canvas {
-	background-image: url(bg.jpg);
-	background-size: cover;
-	background-position: 50% 50%;
-	background-repeat: no-repeat;
-}
-
 /* button */
-button {
+.button {
 	display: inline-block;
 	position: relative;
 	margin: 20px 0 26px;
@@ -45,7 +42,7 @@ button {
 	cursor: pointer;
 	outline: 0;
 }
-button::after {
+.button::after {
 	content: '';
 	display: inline-block;
 	vertical-align: middle;
@@ -56,7 +53,7 @@ button::after {
 	border-left: 6px solid transparent;
 	border-right: 6px solid transparent;
 }
-button:active {
+.button:active {
 	top: 6px;
 	box-shadow: none;
 }
@@ -87,4 +84,72 @@ button:active {
 .pagination a:active {
 	top: 4px;
 	box-shadow: none;
+}
+
+
+/* switch button */
+.canvas-container {
+	position: relative;
+}
+.canvas-container #canvas {
+	margin-bottom: 1em;
+}
+
+.canvas-switch {
+	margin: 1.618em 0;
+}
+
+.canvas-container label {
+	cursor: pointer;
+	display: inline-block;
+	vertical-align: middle;
+	margin: 0 .5em;
+	padding: 0;
+	background-color: #ccc;
+	border-radius: 50%;
+	font-size: 10px;
+	line-height: 2;
+	width: 2em;
+	height: 2em;
+}
+.canvas-container input {
+	visibility: hidden;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 0;
+	height: 0;
+}
+
+.canvas-bg-container {
+	position: absolute;
+	z-index: -1;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 0;
+	padding-top: 56.25%;
+}
+
+.canvas-bg {
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+	background-size: cover;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+:checked + label {
+	background-color: #cc0000;
+	color: #ffffff;
+}
+
+#bg1:checked ~ .canvas-bg-container .canvas-bg1 {
+	background-image: url(./video-4/bg.jpg);
+}
+#bg2:checked ~ .canvas-bg-container .canvas-bg2 {
+	background-image: url(./video-4/bg2.jpg);
 }

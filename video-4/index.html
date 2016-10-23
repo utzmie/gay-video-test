@@ -16,7 +16,7 @@
 	<meta name="twitter:title" content="ホモ4">
 	<meta name="twitter:description" content="HTML5(canvas)でクロマキー合成テスト">
 	<meta name="twitter:image" content="https://utzmie.github.io/gay-video-test/video-4/ogp.jpg">
-	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="../style.css">
 </head>
 <body>
 
@@ -29,7 +29,15 @@
 		</video>
 
 		<h2>canvas</h2>
-		<canvas id="canvas" width="480" height="270"></canvas>
+		<div class="canvas-container video-4">
+			<canvas id="canvas" width="480" height="270"></canvas>
+			<input type="radio" id="bg1" name="switch" checked> <label for="bg1"> 1</label>
+			<input type="radio" id="bg2" name="switch"> <label for="bg2"> 2</label>
+			<div class="canvas-bg-container">
+				<div class="canvas-bg canvas-bg1"></div>
+				<div class="canvas-bg canvas-bg2"></div>
+			</div>
+		</div>
 
 		<p class="pagination"><a href="../video-3/">前へ</a></p>
 
