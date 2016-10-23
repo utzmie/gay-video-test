@@ -147,9 +147,9 @@ ul {
 	color: #ffffff;
 }
 
-#bg1:checked ~ .canvas-bg-container .canvas-bg1 {
+#bg1:checked ~ .canvas-bg-container .canvas-bg {
 	background-image: url(./video-4/bg.jpg);
 }
-#bg2:checked ~ .canvas-bg-container .canvas-bg2 {
+#bg2:checked ~ .canvas-bg-container .canvas-bg {
 	background-image: url(./video-4/bg2.jpg);
 }
