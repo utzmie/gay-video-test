@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>ホモ2</title>
+	<meta property="og:title" content="ホモ2">
+	<meta property="og:type" content="article">
+	<meta property="og:image" content="https://utzmie.github.io/gay-video-test/video-2/ogp.jpg">
+	<meta property="og:url" content="https://utzmie.github.io/gay-video-test/video-2/">
+	<meta property="og:description" content="HTML5(canvas)でmp4動画の1コマを切り抜くテスト2">
+	<meta property="og:site_name" content="ホモ2">
+	<meta property="og:locale" content="ja_JP">
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="ホモ2">
+	<meta name="twitter:description" content="HTML5(canvas)でmp4動画の1コマを切り抜くテスト2">
+	<meta name="twitter:image" content="https://utzmie.github.io/gay-video-test/video-2/ogp.jpg">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+	<div class="container">
+		<h1>HTML5 &lt;video&gt;の動画をcanvas要素に描画2</h1>
+
+		<video id="gay" muted autoplay loop controls width="480" height="270">
+			<source src="../gay.mp4">
+		</video>
+		<p><code>addEventListener: timeupdate</code> で描画。カクカク</p>
+		<canvas id="canvas" width="480" height="270" ></canvas>
+	</div><!-- /container -->
+
+	<script>
+		var video  = document.getElementById('gay');
+		var canvas = document.getElementById('canvas');
+		var context = canvas.getContext("2d");
+
+		play();
+
+		function play() {	
+			video.addEventListener('timeupdate', function() {
+				context.drawImage(video, 0, 0, 480, 270);
+			}, true);
+		}
+
+	</script>
+</body>
+</html>
