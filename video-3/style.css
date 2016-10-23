@@ -1,0 +1,59 @@
+body {
+	margin: 1em;
+	padding: 0;
+	text-align: center;
+}
+
+body, button {
+	font-family: -apple-system, BlinkMacSystemFont, Helvetica, "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+}
+
+video,
+canvas {
+	display: block;
+	margin: 1em auto 3em;
+}
+
+/* container */
+.container {
+	max-width: 960px;
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* canvas */
+#canvas {
+	background-color: #999;
+}
+
+/* button */
+button {
+	display: inline-block;
+	position: relative;
+	margin: 20px 0 26px;
+	padding: 1em 2em;
+	background-color: #dd0000;
+	color: #ffffff;
+	border: none;
+	font-size: 14px;
+	border-radius: 6px;
+	box-shadow: 0 6px 0 #660000;
+	cursor: pointer;
+	outline: 0;
+}
+button::after {
+	content: '';
+	display: inline-block;
+	vertical-align: middle;
+	margin: 0 auto;
+	width: 0;
+	height: 0;
+	border-top: 8px solid #fff;
+	border-left: 6px solid transparent;
+	border-right: 6px solid transparent;
+}
+button:active {
+	top: 6px;
+	box-shadow: none;
+}
