@@ -40,9 +40,10 @@
 			</div>
 		</div>
 
+		<p>背景を好きな画像に変更してみよう</p>
 		<p class="input-container">
-			<input type="text" id="image_url" name="image_url" placeholder="差し替える背景画像のURLを入れてね">
-			<button class="button" id="image_submit">変更</button>
+			<input type="file" id="image_url" name="image_url">
+			<button class="button" type="submit" id="image_submit" name="image_submit">変更</button>
 		</p>
 		<style>
 			.input-container {
@@ -50,18 +51,22 @@
 				display: -moz-flex;
 				display: -ms-flex;
 				display: flex;
-				align-items: center;
+				align-items: flex-start;
 			}
-			.input-container input[type="text"] {
-				box-sizing: border-box;
+			.input-container input[type="file"] {
 				width: 100%;
-				height: 3em;
-				font-size: 16px;
-				padding: .5em;
-				margin-right: .5em
+				border: 3px solid #ddd;
+				padding: 1.5em 1em;
+				cursor: pointer;
+				box-sizing: border-box;
+				margin-right: 1em;
 			}
-			.input-container input[type="submit"] {
+			.input-container input[type="file"]:hover {
+				border-color: #E8A1A8;
+			}
+			.input-container button {
 				width: auto;
+				margin: 0;	
 			}
 		</style>
 
@@ -127,17 +132,25 @@
 
 
 		// 背景画像の変更
-		var image_url    = document.getElementById('image_url');
+		var up_file      = document.getElementById('image_url');
 		var image_submit = document.getElementById('image_submit');
 		var canvas_bg    = document.getElementById('canvas-bg');
 
-		image_submit.addEventListener('click', function() {
-			if ( image_url.value ) {
-				canvas_bg.setAttribute('style', "background-image: url(" + image_url.value +");");
-				console.log(image_url.value);
-			}
-		});
+		image_submit.addEventListener('click', function(e) {
+			
+			var image_data = up_file.files[0];
 
+			fileReader = new FileReader();
+			fileReader.readAsDataURL(image_data);
+
+			fileReader.onload = function(event) {
+				var image_data_uri = event.target.result;				
+				canvas_bg.setAttribute('style',
+					'background-image: url("' + image_data_uri + '");'
+				);
+			};
+
+		});
 
 	</script>
 </body>
