@@ -16,7 +16,7 @@ canvas {
 
 /* container */
 .container {
-	max-width: 960px;
+	max-width: 480px;
 	width: 90%;
 	margin-left: auto;
 	margin-right: auto;
@@ -55,5 +55,33 @@ button::after {
 }
 button:active {
 	top: 6px;
+	box-shadow: none;
+}
+
+.pagination {
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	justify-content: space-around;
+}
+.pagination a {
+	display: inline-block;
+	position: relative;
+	margin: 20px 0 26px;
+	padding: .5em 2em;
+	background-color: #dd0000;
+	color: #ffffff;
+	border: none;
+	font-size: 14px;
+	border-radius: 4px;
+	box-shadow: 0 4px 0 #660000;
+	cursor: pointer;
+	outline: 0;
+	text-decoration: none;
+}
+.pagination a:active {
+	top: 4px;
 	box-shadow: none;
 }
